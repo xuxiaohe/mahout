@@ -1,0 +1,479 @@
+package demo.pojo;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+
+@Document(collection="user")
+public class User extends JdkSerializationRedisSerializer implements Serializable {
+	private static final long serialVersionUID = 522889572773714595L;
+	@Id
+	private String id;
+	
+	@Indexed
+	private String userName;
+	@Indexed
+	private String passWord;
+	
+	private String sex;
+	
+	private String email;
+	@Indexed
+	private String phoneNumber;
+	
+	private String intro;
+	
+	private String tag;
+
+	
+	private long ctime;
+	
+	private long utime;
+	
+	private long logintime;
+	@Indexed
+	private String udid;
+	@Indexed
+	private String token;
+	
+	private long expireTime;
+	
+	
+	private String logoURL;
+	
+	private String nickName;
+	@Indexed
+	private double [] location;
+	
+	//20140911云学堂增加字段
+	private Jobs job; //我的职位
+
+	private Jobs interestJob;//感兴趣职位
+	private long userNumber;//用户号
+	private  long birthday;//出生日期
+	private int groupCount;//群组数量
+	
+	//20140911云学堂增加字段
+		/**
+	     * 纬度
+	     */
+	private double lat;
+	    
+	    /**
+	     * 经度
+	     */
+	private double lng;
+	
+	private String constelLation;//星座
+	
+	private Set<String> industry;//方向
+	
+	private String direction;//行业
+	
+	private String industryName;//行业名称
+	
+	private String station;//岗位
+	
+	private String education;//学历
+	
+	private String school;//学校
+	
+	private String area;//地区
+	
+	private String company;//公司
+	
+	private Set<String> interest;//感兴趣得事情
+	
+	private Set<String> special;//擅长
+	
+	private int age;//年纪
+	
+	
+	//private Set<ZSetOperations.TypedTuple<String>> userTageName;//用户标签
+	
+	private Object userTageName;
+	
+	private int scoreSum;//标签数量
+	
+	
+	private int robot;//机器人标志
+	@Indexed
+	private int deleFlag;//删除标示 0未删除1已删除
+	
+	private boolean  isEmailChecked;     //标示邮箱是否校验（如使用email注册成功，则默认邮箱已验证）    
+    private boolean  isPhoneChecked;     //标示手机号是否校验（如使用手机号注册成功，则默认手机号已验证）
+    @Indexed
+    private String registType;   //注册类型，01  手机注册用户  02  邮箱注册用户   11 QQ第三方登录   12  微信第三方登录  13新浪微博第三方登录
+    @Indexed
+    private String openId;     //第三方登录唯一标示
+
+	
+	
+	
+	 public int getGroupCount() {
+		return groupCount;
+	}
+
+	public void setGroupCount(int groupCount) {
+		this.groupCount = groupCount;
+	}
+
+	public long getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(long birthday) {
+		this.birthday = birthday;
+	}
+
+	
+
+	public long getUserNumber() {
+		return userNumber;
+	}
+
+	public void setUserNumber(long userNumber) {
+		this.userNumber = userNumber;
+	}
+
+
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag=tag;
+	}
+
+	public long getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(long ctime) {
+		this.ctime = ctime;
+	}
+
+	public long getUtime() {
+		return utime;
+	}
+
+	public void setUtime(long utime) {
+		this.utime = utime;
+	}
+	public long getLogintime() {
+		return logintime;
+	}
+
+	public void setLogintime(long logintime) {
+		this.logintime = logintime;
+	}
+
+	public String getUdid() {
+		return udid;
+	}
+
+	public void setUdid(String udid) {
+		this.udid = udid;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public long getExpireTime() {
+		return expireTime;
+	}
+
+	public void setExpireTime(long expireTime) {
+		this.expireTime = expireTime;
+	}
+
+
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
+	public String getLogoURL() {
+		return logoURL;
+	}
+
+	public void setLogoURL(String logoURL) {
+		this.logoURL = logoURL;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public double[] getLocation() {
+		return location;
+	}
+
+	public void setLocation(double[] location) {
+		this.location = location;
+	}
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+	public Jobs getJob() {
+		return job;
+	}
+
+	public void setJob(Jobs job) {
+		this.job = job;
+	}
+
+	public Jobs getInterestJob() {
+		return interestJob;
+	}
+
+	public void setInterestJob(Jobs interestJob) {
+		this.interestJob = interestJob;
+	}
+
+	public String getConstelLation() {
+		return constelLation;
+	}
+
+	public void setConstelLation(String constelLation) {
+		this.constelLation = constelLation;
+	}
+
+	
+
+	public String getStation() {
+		return station;
+	}
+
+	public void setStation(String station) {
+		this.station = station;
+	}
+
+	public String getEducation() {
+		return education;
+	}
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public Set<String> getInterest() {
+		return interest;
+	}
+
+	public void setInterest(Set<String> interest) {
+		this.interest = interest;
+	}
+
+	public Set<String> getSpecial() {
+		return special;
+	}
+
+	public void setSpecial(Set<String> special) {
+		this.special = special;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	
+
+	public int getScoreSum() {
+		return scoreSum;
+	}
+
+	public void setScoreSum(int scoreSum) {
+		this.scoreSum = scoreSum;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public String getIndustryName() {
+		return industryName;
+	}
+
+	public void setIndustryName(String industryName) {
+		this.industryName = industryName;
+	}
+
+	public Set<String> getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(Set<String> industry) {
+		this.industry = industry;
+	}
+
+	public Object getUserTageName() {
+		return userTageName;
+	}
+
+	public void setUserTageName(Object userTageName) {
+		this.userTageName = userTageName;
+	}
+
+	public int getRobot() {
+		return robot;
+	}
+
+	public void setRobot(int robot) {
+		this.robot = robot;
+	}
+
+	public int getDeleFlag() {
+		return deleFlag;
+	}
+
+	public void setDeleFlag(int deleFlag) {
+		this.deleFlag = deleFlag;
+	}
+
+	public boolean isEmailChecked() {
+		return isEmailChecked;
+	}
+
+	public void setEmailChecked(boolean isEmailChecked) {
+		this.isEmailChecked = isEmailChecked;
+	}
+
+	public boolean isPhoneChecked() {
+		return isPhoneChecked;
+	}
+
+	public void setPhoneChecked(boolean isPhoneChecked) {
+		this.isPhoneChecked = isPhoneChecked;
+	}
+
+	public String getRegistType() {
+		return registType;
+	}
+
+	public void setRegistType(String registType) {
+		this.registType = registType;
+	}
+
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
+}

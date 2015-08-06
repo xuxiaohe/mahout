@@ -1,0 +1,45 @@
+package demo.pojo;
+
+import java.io.Serializable;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+@Document(collection="jobs")
+public class Jobs extends JdkSerializationRedisSerializer implements Serializable {
+	private static final long serialVersionUID = 522889572773714587L;
+
+	@Id
+	private String id;
+	
+	private String name;
+	@Indexed
+	private String pId;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getpId() {
+		return pId;
+	}
+
+	public void setpId(String pId) {
+		this.pId = pId;
+	}
+	
+	
+}

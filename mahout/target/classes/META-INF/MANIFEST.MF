@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: mahout
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: yunxuetang
+Implementation-Vendor-Id: org.test
+Build-Jdk: 1.8.0
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

@@ -1,0 +1,353 @@
+package demo.pojo;
+
+import java.util.List;
+import java.util.Map;
+
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document(collection="xueWenGroup")
+public class XueWenGroup {
+	@Id
+	private String id;
+	@Indexed
+	private String groupName;
+
+	private String intro;
+
+	private List<Object> owner;
+
+	private List<Object> admin;
+
+	private List<Object> member;
+	
+	private List<Object> applyer;
+	
+	private String logoUrl;
+	@Indexed
+	private String isOpen;
+
+	private String passWord;
+
+	private long ctime;
+
+	private long utime;
+
+	//private Category category;
+
+
+	private Map<String, Integer> summary;
+
+	private String isMember;
+
+	private long groupNumber;
+	
+	private String bgUrl;
+
+	private int groupMax = 50;
+	private double[] position;
+	
+	/**
+	 * 纬度
+	 */
+	public double lat;
+
+	/**
+	 * 经度
+	 */
+	public double lng;
+
+	//热度
+	private int temperature;
+
+	private String qrCodeUrl;//二维码地址
+	
+	private Object groupTagName;//群标签
+	
+	private String localName;//地理位置名称
+	
+	private boolean isGeoOpen;//地理坐标是否打开
+	
+	private int scoreSum;//标签数量
+	//标签
+	private String tagNames;
+	//成员数量
+	private int memberCount;
+	
+	private Object categoryId;//一级分类id;
+	private Object childCategoryId;//二级分类Id
+	
+	private int weightSort;//权重
+	
+	public int getWeightSort() {
+		return weightSort;
+	}
+
+	public void setWeightSort(int weightSort) {
+		this.weightSort = weightSort;
+	}
+
+	public boolean isReview() {
+		return review;
+	}
+
+	public void setReview(boolean review) {
+		this.review = review;
+	}
+
+	private boolean review;//审核标示
+
+	public int getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(int temperature) {
+		this.temperature = temperature;
+	}
+
+
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
+	public List<Object> getOwner() {
+		return owner;
+	}
+
+	public void setOwner(List<Object> owner) {
+		this.owner = owner;
+	}
+
+	public List<Object> getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(List<Object> admin) {
+		this.admin = admin;
+	}
+
+	public List<Object> getMember() {
+		return member;
+	}
+
+	public void setMember(List<Object> member) {
+		if (member!=null) {
+			this.memberCount=member.size();
+		}else{
+			this.memberCount=0;
+		}
+		this.member = member;
+	}
+
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+
+	public String getIsOpen() {
+		return isOpen;
+	}
+
+	public void setIsOpen(String isOpen) {
+		this.isOpen = isOpen;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public long getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(long ctime) {
+		this.ctime = ctime;
+	}
+
+	public long getUtime() {
+		return utime;
+	}
+
+	public void setUtime(long utime) {
+		this.utime = utime;
+	}
+
+
+	public Map<String, Integer> getSummary() {
+		return summary;
+	}
+
+	public void setSummary(Map<String, Integer> summary) {
+		this.summary = summary;
+	}
+
+	public String getIsMember() {
+		return isMember;
+	}
+
+	public void setIsMember(String isMember) {
+		this.isMember = isMember;
+	}
+
+	public long getGroupNumber() {
+		return groupNumber;
+	}
+
+	public void setGroupNumber(long groupNumber) {
+		this.groupNumber = groupNumber;
+	}
+
+	public int getGroupMax() {
+		return groupMax;
+	}
+
+	public void setGroupMax(int groupMax) {
+		this.groupMax = groupMax;
+	}
+
+	public double[] getPosition() {
+		return position;
+	}
+
+	public void setPosition(double[] position) {
+		this.position = position;
+	}
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
+	public String getQrCodeUrl() {
+		return qrCodeUrl;
+	}
+
+	public void setQrCodeUrl(String qrCodeUrl) {
+		this.qrCodeUrl = qrCodeUrl;
+	}
+
+
+
+	public String getLocalName() {
+		return localName;
+	}
+
+	public void setLocalName(String localName) {
+		this.localName = localName;
+	}
+
+	public boolean isGeoOpen() {
+		return isGeoOpen;
+	}
+
+	public void setGeoOpen(boolean isGeoOpen) {
+		this.isGeoOpen = isGeoOpen;
+	}
+
+	public Object getGroupTagName() {
+		return groupTagName;
+	}
+
+	public void setGroupTagName(Object groupTagName) {
+		this.groupTagName = groupTagName;
+	}
+
+	public int getScoreSum() {
+		return scoreSum;
+	}
+
+	public void setScoreSum(int scoreSum) {
+		this.scoreSum = scoreSum;
+	}
+
+	public String getBgUrl() {
+		return bgUrl;
+	}
+
+	public void setBgUrl(String bgUrl) {
+		this.bgUrl = bgUrl;
+	}
+
+	public String getTagNames() {
+		return tagNames;
+	}
+
+	public void setTagNames(String tagNames) {
+		this.tagNames = tagNames;
+	}
+
+	public int getMemberCount() {
+		return memberCount;
+	}
+
+	public void setMemberCount(int memberCount) {
+		this.memberCount = memberCount;
+	}
+
+	public Object getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Object categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public Object getChildCategoryId() {
+		return childCategoryId;
+	}
+
+	public void setChildCategoryId(Object childCategoryId) {
+		this.childCategoryId = childCategoryId;
+	}
+
+	public List<Object> getApplyer() {
+		return applyer;
+	}
+
+	public void setApplyer(List<Object> applyer) {
+		this.applyer = applyer;
+	}
+
+	
+	
+}

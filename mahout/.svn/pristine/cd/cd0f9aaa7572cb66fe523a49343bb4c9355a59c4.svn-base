@@ -1,0 +1,79 @@
+package demo.pojo;
+
+import java.io.Serializable;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+@Document(collection="fav")
+public class Fav extends JdkSerializationRedisSerializer implements Serializable {
+	private static final long serialVersionUID = 522889572773714582L;
+	@Id
+	private String id;
+	@Indexed
+	private Object userId;  //用户Id
+	@Indexed
+	private String domain;//域即产品线  如：yxt
+	@Indexed
+	private String appKey;  //来源 ，如 ios，android，pc,oss
+	@Indexed
+	private String sourceId; //类型ID(话题Id，课程Id等)
+	@Indexed
+	private String favType; //类型， (查看配置文件Config，type类型)
+	@Indexed
+	private long ctime;
+	private long utime;
+
+	public Fav(){
+		super();
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public Object getUserId() {
+		return userId;
+	}
+	public void setUserId(Object userId) {
+		this.userId = userId;
+	}
+	public String getDomain() {
+		return domain;
+	}
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+	public String getAppKey() {
+		return appKey;
+	}
+	public void setAppKey(String appKey) {
+		this.appKey = appKey;
+	}
+	public String getSourceId() {
+		return sourceId;
+	}
+	public void setSourceId(String sourceId) {
+		this.sourceId = sourceId;
+	}
+	public String getFavType() {
+		return favType;
+	}
+	public void setFavType(String favType) {
+		this.favType = favType;
+	}
+	public long getCtime() {
+		return ctime;
+	}
+	public void setCtime(long ctime) {
+		this.ctime = ctime;
+	}
+	public long getUtime() {
+		return utime;
+	}
+	public void setUtime(long utime) {
+		this.utime = utime;
+	}
+}

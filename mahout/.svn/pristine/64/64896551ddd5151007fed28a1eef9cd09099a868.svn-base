@@ -1,0 +1,65 @@
+package demo.controller;
+
+import java.io.Serializable;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Service;
+@Service
+public class rediscontent {
+
+	@Autowired
+	RedisTemplate redisTemplate;
+	/**
+	 * 根据用户的number查询推荐的信息
+	 * @param <T>
+	 * @param request
+	 * @param unumber
+	 * @return 
+	 * @return
+	 * @throws Exception
+	 */
+	 
+	public  void saveredis(Object o) throws Exception {
+		redisTemplate.setKeySerializer(new StringRedisSerializer());  
+		redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());  
+		redisTemplate.afterPropertiesSet();  
+	  
+	    ValueOperations<String, Serializable> ops = redisTemplate.opsForValue();  
+	  
+//		redisuser u=new redisuser();
+//		u.setId("111");
+//		u.setName("hehe");
+//		u.setPassword("222");
+		 ops.set("mahout:collection",(Serializable) o);
+		 
+		
+	}
+	
+	
+	/**
+	 * 根据用户的number查询推荐的信息
+	 * @param request
+	 * @param unumber
+	 * @return
+	 * @throws Exception
+	 */
+	 
+	public  Object getByuseidonredis() throws Exception {
+		redisTemplate.setKeySerializer(new StringRedisSerializer());  
+		redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());  
+		redisTemplate.afterPropertiesSet();  
+	  
+	    ValueOperations<String, Serializable> ops = redisTemplate.opsForValue();  
+	  
+		 
+		Object u= ops.get("mahout:collection");
+		return u;
+		
+	}
+	
+	
+}
